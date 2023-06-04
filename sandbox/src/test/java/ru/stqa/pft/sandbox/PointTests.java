@@ -5,10 +5,10 @@ import org.testng.annotations.Test;
 public class PointTests {
 
     @Test
-    public void testDistance (){
-     Point p1= new Point (5, 10)   ;
+    public void testDistance (){    /*название тестового метода*/
+     Point p1= new Point (5, 10)   ; /*создаем новую точку*/
      Point p2= new Point (5, 10)   ;
 
-     assert distance == 0;
+     assert p2.distance(p1) == 0;
     }
 }
