@@ -30,7 +30,7 @@ public class CreateContact2 {
   @Test
   public void testCreateContact2() throws Exception {
 
-    fillContactForm("Katy", "Vlad", "Melnik", "KatyKaty", "1", "zzz", "zzz", "12345", "54321", "1111", "22222", "katkimo@", "katkimo2@", "katkimo3@", "123", "5", "January", "1900", "5", "1950", "Address", "123", "123");
+    fillContactForm(new ContactData("Katy", "Vlad", "Melnik", "KatyKaty", "1", "zzz", "zzz", "12345", "54321", "1111", "22222", "katkimo@", "katkimo2@", "katkimo3@", "123", "5", "January", "1900", "5", "1950", "Address", "123", "123"));
     submitContact();
     logout();
   }
@@ -43,100 +43,94 @@ public class CreateContact2 {
     driver.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  private void fillContactForm(String firstname, String middlename,
-                               String lastname, String nickname, String title,
-                               String company, String address, String home, String mobile,
-                               String work, String fax, String emeil, String emeil2, String emeil3,
-                               String homepage, String bday, String bmonth, String byear,
-                               String aday, String ayear, String address2, String phone2,
-                               String notes) {
+  private void fillContactForm(ContactData contactData) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys(firstname);
+    driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
     driver.findElement(By.name("lastname")).click();
     driver.findElement(By.name("middlename")).click();
     driver.findElement(By.name("middlename")).click();
     driver.findElement(By.name("middlename")).clear();
-    driver.findElement(By.name("middlename")).sendKeys(middlename);
+    driver.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
     driver.findElement(By.name("lastname")).click();
     driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys(lastname);
+    driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
     driver.findElement(By.name("nickname")).click();
     driver.findElement(By.name("nickname")).clear();
-    driver.findElement(By.name("nickname")).sendKeys(nickname);
+    driver.findElement(By.name("nickname")).sendKeys(contactData.getNickname());
     driver.findElement(By.name("title")).click();
     driver.findElement(By.name("title")).clear();
-    driver.findElement(By.name("title")).sendKeys(title);
+    driver.findElement(By.name("title")).sendKeys(contactData.getTitle());
     driver.findElement(By.name("theform")).click();
     driver.findElement(By.name("company")).click();
     driver.findElement(By.name("company")).click();
     driver.findElement(By.name("company")).clear();
-    driver.findElement(By.name("company")).sendKeys(company);
+    driver.findElement(By.name("company")).sendKeys(contactData.getCompany());
     driver.findElement(By.name("address")).click();
     driver.findElement(By.name("address")).clear();
-    driver.findElement(By.name("address")).sendKeys(address);
+    driver.findElement(By.name("address")).sendKeys(contactData.getAddress());
     driver.findElement(By.name("home")).click();
     driver.findElement(By.name("home")).click();
     driver.findElement(By.name("home")).clear();
-    driver.findElement(By.name("home")).sendKeys(home);
+    driver.findElement(By.name("home")).sendKeys(contactData.getHome());
     driver.findElement(By.name("mobile")).click();
     driver.findElement(By.name("mobile")).clear();
-    driver.findElement(By.name("mobile")).sendKeys(mobile);
+    driver.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
     driver.findElement(By.name("work")).click();
     driver.findElement(By.name("work")).clear();
-    driver.findElement(By.name("work")).sendKeys(work);
+    driver.findElement(By.name("work")).sendKeys(contactData.getWork());
     driver.findElement(By.name("fax")).click();
     driver.findElement(By.name("fax")).clear();
-    driver.findElement(By.name("fax")).sendKeys(fax);
+    driver.findElement(By.name("fax")).sendKeys(contactData.getFax());
     driver.findElement(By.name("email")).click();
     driver.findElement(By.name("email")).click();
     driver.findElement(By.name("email")).click();
     driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys(emeil);
+    driver.findElement(By.name("email")).sendKeys(contactData.getEmeil());
     driver.findElement(By.name("email2")).click();
     driver.findElement(By.name("email2")).click();
     driver.findElement(By.name("email2")).click();
     driver.findElement(By.name("email2")).click();
     driver.findElement(By.name("email2")).click();
     driver.findElement(By.name("email2")).clear();
-    driver.findElement(By.name("email2")).sendKeys(emeil2);
+    driver.findElement(By.name("email2")).sendKeys(contactData.getEmeil2());
     driver.findElement(By.name("email3")).click();
     driver.findElement(By.name("email3")).click();
     driver.findElement(By.name("email3")).click();
     driver.findElement(By.name("email3")).clear();
-    driver.findElement(By.name("email3")).sendKeys(emeil3);
+    driver.findElement(By.name("email3")).sendKeys(contactData.getEmeil3());
     driver.findElement(By.name("homepage")).click();
     driver.findElement(By.name("homepage")).clear();
-    driver.findElement(By.name("homepage")).sendKeys(homepage);
+    driver.findElement(By.name("homepage")).sendKeys(contactData.getHomepage());
     driver.findElement(By.name("bday")).click();
-    new Select(driver.findElement(By.name("bday"))).selectByVisibleText(bday);
+    new Select(driver.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
     driver.findElement(By.xpath("//option[@value='5']")).click();
     driver.findElement(By.name("bmonth")).click();
-    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText(bmonth);
+    new Select(driver.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBmonth());
     driver.findElement(By.xpath("//option[@value='January']")).click();
     driver.findElement(By.name("byear")).click();
     driver.findElement(By.name("byear")).clear();
-    driver.findElement(By.name("byear")).sendKeys(byear);
+    driver.findElement(By.name("byear")).sendKeys(contactData.getByear());
     driver.findElement(By.name("aday")).click();
-    new Select(driver.findElement(By.name("aday"))).selectByVisibleText(aday);
+    new Select(driver.findElement(By.name("aday"))).selectByVisibleText(contactData.getAday());
     driver.findElement(By.xpath("//div[@id='content']/form/select[3]/option[7]")).click();
     driver.findElement(By.name("amonth")).click();
     new Select(driver.findElement(By.name("amonth"))).selectByVisibleText("January");
     driver.findElement(By.xpath("//div[@id='content']/form/select[4]/option[2]")).click();
     driver.findElement(By.name("ayear")).click();
     driver.findElement(By.name("ayear")).clear();
-    driver.findElement(By.name("ayear")).sendKeys(ayear);
+    driver.findElement(By.name("ayear")).sendKeys(contactData.getAyear());
     driver.findElement(By.name("address2")).click();
     driver.findElement(By.xpath("//div[@id='content']/form/label[23]")).click();
     driver.findElement(By.name("address2")).click();
     driver.findElement(By.name("address2")).clear();
-    driver.findElement(By.name("address2")).sendKeys(address2);
+    driver.findElement(By.name("address2")).sendKeys(contactData.getAddress2());
     driver.findElement(By.name("phone2")).click();
     driver.findElement(By.name("phone2")).clear();
-    driver.findElement(By.name("phone2")).sendKeys(phone2);
+    driver.findElement(By.name("phone2")).sendKeys(contactData.getPhone2());
     driver.findElement(By.name("notes")).click();
     driver.findElement(By.name("notes")).clear();
-    driver.findElement(By.name("notes")).sendKeys(notes);
+    driver.findElement(By.name("notes")).sendKeys(contactData.getNotes());
   }
 
   @AfterMethod(alwaysRun = true)
