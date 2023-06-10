@@ -16,6 +16,10 @@ public class CreateGroup4 {
 
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/group.php");
+    login();
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -28,8 +32,22 @@ public class CreateGroup4 {
   @Test
   public void testCreateGroup4() throws Exception {
 
-    wd.findElement(By.xpath("//body")).click();
-    wd.findElement(By.name("new")).click();
+    gotoGroupPage();
+    initGroupCreation();
+    fillGroupForm();
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+
+  private void returnToGroupPage() {
+    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void submitGroupCreation() {
+    wd.findElement(By.name("submit")).click();
+  }
+
+  private void fillGroupForm() {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys("test6");
@@ -40,8 +58,14 @@ public class CreateGroup4 {
     wd.findElement(By.name("group_footer")).clear();
     wd.findElement(By.name("group_footer")).sendKeys("6");
     wd.findElement(By.name("group_name")).click();
-    wd.findElement(By.name("submit")).click();
-    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void initGroupCreation() {
+    wd.findElement(By.name("new")).click();
+  }
+
+  private void gotoGroupPage() {
+    wd.findElement(By.xpath("//body")).click();
   }
 
   @AfterMethod(alwaysRun = true)
