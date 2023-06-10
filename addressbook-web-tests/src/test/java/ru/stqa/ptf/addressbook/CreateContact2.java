@@ -16,6 +16,10 @@ public class CreateContact2 {
     driver = new FirefoxDriver();
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get("http://localhost/addressbook/edit.php");
+    login();
+  }
+
+  private void login() {
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
     driver.findElement(By.name("user")).sendKeys("admin");
@@ -27,7 +31,21 @@ public class CreateContact2 {
 
   @Test
   public void testCreateContact2() throws Exception {
-   
+
+    fillContactForm();
+    submitContact();
+    logout();
+  }
+
+  private void logout() {
+    driver.findElement(By.linkText("Logout")).click();
+  }
+
+  private void submitContact() {
+    driver.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+  }
+
+  private void fillContactForm() {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).clear();
     driver.findElement(By.name("firstname")).sendKeys("Katy");
@@ -118,8 +136,6 @@ public class CreateContact2 {
     driver.findElement(By.name("notes")).click();
     driver.findElement(By.name("notes")).clear();
     driver.findElement(By.name("notes")).sendKeys("123");
-    driver.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-    driver.findElement(By.linkText("Logout")).click();
   }
 
   @AfterMethod(alwaysRun = true)
