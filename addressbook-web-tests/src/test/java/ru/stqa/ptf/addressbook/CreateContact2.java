@@ -30,9 +30,14 @@ public class CreateContact2 {
   @Test
   public void testCreateContact2() throws Exception {
 
-    fillContactForm(new ContactData("Katy", "Vlad", "Melnik", "KatyKaty", "1", "zzz", "zzz", "12345", "54321", "1111", "22222", "katkimo@", "katkimo2@", "katkimo3@", "123", "5", "January", "1900", "5", "1950", "Address", "123", "123"));
+    fillContactForm(new ContactData("Katy", "Vlad", "Melnik",
+            "KatyKaty", "1", "zzz", "zzz", "12345",
+            "54321", "1111", "22222", "katkimo@", "katkimo2@",
+            "katkimo3@", "123", "5", "January", "1900",
+            "5", "1950", "Address", "123", "123"));
     submitContact();
     logout();
+
   }
 
   private void logout() {
@@ -136,6 +141,7 @@ public class CreateContact2 {
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     driver.quit();
+
   }
 
   private boolean isElementPresent(By by) {
