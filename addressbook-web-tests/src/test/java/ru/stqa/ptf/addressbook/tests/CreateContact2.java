@@ -1,10 +1,11 @@
-package ru.stqa.ptf.addressbook;
+package ru.stqa.ptf.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import ru.stqa.ptf.addressbook.model.ContactData;
 
 public class CreateContact2 {
   private WebDriver driver;
