@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.ptf.addressbook.model.GroupData;
 
 public class CreateGroup4 {
   private WebDriver wd;
