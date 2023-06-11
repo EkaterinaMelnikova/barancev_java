@@ -9,9 +9,9 @@ public class DeleteGroupTestBase extends TestBase {
   public void testDeleteGroup() throws Exception {
 
     app.gotoGroupPage(); // уже имеющийся метод
-    app.selectGroup();
-    app.deleteSelectedGroups();
-    app.returnToGroupPage(); //уже имеющийся метод
+    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().deleteSelectedGroups();
+    app.getGroupHelper().returnToGroupPage(); //уже имеющийся метод
   }
 
 
