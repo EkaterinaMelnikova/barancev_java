@@ -12,7 +12,8 @@ public class ApplacationManager {
 
     public WebDriver wd;
 
-    private GroupHelper groupHelper;
+    private  NavigationHelper navigationHelper;
+    public GroupHelper groupHelper;
 
     public void init() {
         wd = new FirefoxDriver();
@@ -21,10 +22,11 @@ public class ApplacationManager {
         wd.get("http://localhost/addressbook/group.php");
 
         groupHelper=new GroupHelper (wd);
+        navigationHelper = new NavigationHelper(wd);
         login("admin", "secret");
     }
 
-    private void login(String username, String password) {
+    public void login(String username, String password) {
       wd.findElement(By.name("user")).click();
       wd.findElement(By.name("user")).clear();
       wd.findElement(By.name("user")).sendKeys(username);
@@ -34,15 +36,11 @@ public class ApplacationManager {
       wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    public void gotoGroupPage() {
-      wd.findElement(By.xpath("//body")).click();
-    }
-
     public void stop() {
         wd.quit();
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
       try {
         wd.findElement(by);
         return true;
@@ -51,7 +49,7 @@ public class ApplacationManager {
       }
     }
 
-    private boolean isAlertPresent() {
+    public boolean isAlertPresent() {
       try {
         wd.switchTo().alert();
         return true;
@@ -62,5 +60,9 @@ public class ApplacationManager {
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
