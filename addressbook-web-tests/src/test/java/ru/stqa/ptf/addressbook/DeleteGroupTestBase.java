@@ -8,10 +8,10 @@ public class DeleteGroupTestBase extends TestBase {
   @Test
   public void testDeleteGroup() throws Exception {
 
-    gotoGroupPage(); // уже имеющийся метод
-    selectGroup();
-    deleteSelectedGroups();
-    returnToGroupPage(); //уже имеющийся метод
+    app.gotoGroupPage(); // уже имеющийся метод
+    app.selectGroup();
+    app.deleteSelectedGroups();
+    app.returnToGroupPage(); //уже имеющийся метод
   }
 
 
