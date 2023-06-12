@@ -5,14 +5,14 @@ import org.testng.annotations.Test;
 public class DeleteGroupTestBase extends TestBase {
 
 
-  @Test
-  public void testDeleteGroup() throws Exception {
+    @Test
+    public void testDeleteGroup() throws Exception {
 
-    app.getNavigationHelper().gotoGroupPage(); // уже имеющийся метод
-    app.getGroupHelper().selectGroup();
-    app.getGroupHelper().deleteSelectedGroups();
-    app.getGroupHelper().returnToGroupPage(); //уже имеющийся метод
-  }
+        app.getNavigationHelper().gotoGroupPage(); // уже имеющийся метод
+        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().deleteSelectedGroups();
+        app.getGroupHelper().returnToGroupPage(); //уже имеющийся метод
+    }
 
 
 }

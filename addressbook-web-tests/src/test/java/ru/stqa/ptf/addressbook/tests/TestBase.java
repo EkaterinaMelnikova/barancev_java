@@ -2,11 +2,11 @@ package ru.stqa.ptf.addressbook.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import ru.stqa.ptf.addressbook.appmanager.ApplacationManager;
+import ru.stqa.ptf.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-    public final ApplacationManager app = new ApplacationManager();
+    public final ApplicationManager app = new ApplicationManager();
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
