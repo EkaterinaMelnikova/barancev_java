@@ -10,7 +10,7 @@ public class ContactData {
     private final String address;
     private final String home;
     private final String mobile;
-    private final String work;
+    private final String workphone;
     private final String fax;
     private final String emeil;
     private final String emeil2;
@@ -20,12 +20,13 @@ public class ContactData {
     private final String bmonth;
     private final String byear;
     private final String aday;
+    private final String amonth ;
     private final String ayear;
     private final String address2;
     private final String phone2;
     private final String notes;
 
-    public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String emeil, String emeil2, String emeil3, String homepage, String bday, String bmonth, String byear, String aday, String ayear, String address2, String phone2, String notes) {
+    public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String work, String fax, String emeil, String emeil2, String emeil3, String homepage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String address2, String phone2, String notes) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -35,7 +36,7 @@ public class ContactData {
         this.address = address;
         this.home = home;
         this.mobile = mobile;
-        this.work = work;
+        this.workphone = work;
         this.fax = fax;
         this.emeil = emeil;
         this.emeil2 = emeil2;
@@ -45,6 +46,7 @@ public class ContactData {
         this.bmonth = bmonth;
         this.byear = byear;
         this.aday = aday;
+        this.amonth = amonth;
         this.ayear = ayear;
         this.address2 = address2;
         this.phone2 = phone2;
@@ -87,8 +89,8 @@ public class ContactData {
         return mobile;
     }
 
-    public String getWork() {
-        return work;
+    public String getWorkphone() {
+        return workphone;
     }
 
     public String getFax() {
@@ -126,6 +128,8 @@ public class ContactData {
     public String getAday() {
         return aday;
     }
+
+    public String getAmonth() {return amonth;}
 
     public String getAyear() {
         return ayear;
