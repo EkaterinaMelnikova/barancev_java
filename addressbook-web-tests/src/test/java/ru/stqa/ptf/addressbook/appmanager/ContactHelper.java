@@ -14,16 +14,16 @@ public class ContactHelper extends HelperBase{
     }
 
     public void logout() {
-        wd.findElement(By.linkText("Logout")).click();
+        click(By.linkText("Logout"));
     }
 
     public void submitContact() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
     public void deleteContact(String idelement) {
-        wd.findElement(By.id(idelement)).click();
-        wd.findElement(By.xpath("//input[@value='Delete']")).click();
+        click(By.id(idelement));
+        click(By.xpath("//input[@value='Delete']"));
     }
 
     public void fillContactForm(ContactData contactData) {
@@ -42,7 +42,6 @@ public class ContactHelper extends HelperBase{
         type(By.name("email2"),contactData.getEmeil2());
         type(By.name("email3"),contactData.getEmeil3());
         type(By.name("homepage"),contactData.getHomepage());
-
 
         click(By.name("bday"));
         select(By.name("bday"), contactData.getBday());
