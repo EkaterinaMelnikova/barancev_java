@@ -45,22 +45,18 @@ public class ContactHelper extends HelperBase{
 
 
         click(By.name("bday"));
-
-        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
+        select(By.name("bday"), contactData.getBday());
 
         click(By.name("bmonth"));
-        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBmonth());
+        select(By.name("bmonth"), contactData.getBmonth());
 
         type(By.name("byear"),contactData.getByear());
 
         click(By.name("aday"));
-
-        new Select(wd.findElement(By.name("aday"))).selectByVisibleText(contactData.getAday());
+        select(By.name("aday"), contactData.getAday());
 
         click(By.name("amonth"));
-
-        new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(contactData.getAmonth());
-
+        select(By.name("amonth"), contactData.getAmonth());
 
         type(By.name("ayear"),contactData.getAyear());
         type(By.name("address2"),contactData.getAddress2());

@@ -3,6 +3,7 @@ package ru.stqa.ptf.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class HelperBase {
     public WebDriver wd;
@@ -28,4 +29,8 @@ public class HelperBase {
             return false;
         }
     }
+
+    protected void select(By locator, String contactdata) {
+        new Select(wd.findElement(locator)).selectByVisibleText(contactdata);}
+
 }
