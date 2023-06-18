@@ -17,27 +17,22 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
-    private String browser;
+    private Browser browser;
 
-    public ApplicationManager (String browser) {
+    public ApplicationManager (Browser browser) {
         this.browser = browser;
     }
 
     public void init() {
 
-        if (Browser.FIREFOX.browserName().equals(browser))
+        if (browser.equals(Browser.FIREFOX))
         {
             wd = new FirefoxDriver();
         }
-        else if (Browser.CHROME.browserName().equals(browser))
+        else if (browser.equals(Browser.CHROME))
         {
             wd = new ChromeDriver();
         }
-        //  if (browser== Browser.FIREFOX) {
-       //     wd = new FirefoxDriver();
-        //} else if (browser==Browser.CHROME) {
-        //    wd = new ChromeDriver();
-
 
 
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
