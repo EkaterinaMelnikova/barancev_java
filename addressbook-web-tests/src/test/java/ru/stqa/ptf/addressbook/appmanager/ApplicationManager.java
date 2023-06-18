@@ -1,10 +1,11 @@
 package ru.stqa.ptf.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.Browser;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,9 +17,28 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private ContactHelper contactHelper;
+    private String browser;
+
+    public ApplicationManager (String browser) {
+        this.browser = browser;
+    }
 
     public void init() {
-        wd = new FirefoxDriver();
+
+        if (Browser.FIREFOX.browserName().equals(browser))
+        {
+            wd = new FirefoxDriver();
+        }
+        else if (Browser.CHROME.browserName().equals(browser))
+        {
+            wd = new ChromeDriver();
+        }
+        //  if (browser== Browser.FIREFOX) {
+       //     wd = new FirefoxDriver();
+        //} else if (browser==Browser.CHROME) {
+        //    wd = new ChromeDriver();
+
+
 
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/group.php");
@@ -28,8 +48,8 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login("admin", "secret");
-    }
 
+    }
 
     public void stop() {
         wd.quit();
