@@ -8,7 +8,7 @@ import sun.plugin2.util.BrowserType;
 
 public class TestBase {
 
-    public final ApplicationManager app = new ApplicationManager(Browser.FIREFOX);
+    public final ApplicationManager app = new ApplicationManager(Browser.CHROME);
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
