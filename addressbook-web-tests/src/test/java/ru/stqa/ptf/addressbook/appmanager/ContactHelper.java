@@ -21,9 +21,9 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void deleteContact(String idelement) {
-        click(By.id(idelement));
-        click(By.xpath("//input[@value='Delete']"));
+    public void deleteContact() {
+        click(By.xpath("//tr[3]/td[8]/a/img"));
+        click(By.xpath("//form[2]/input[2]"));
     }
 
     public void initContactModification () {

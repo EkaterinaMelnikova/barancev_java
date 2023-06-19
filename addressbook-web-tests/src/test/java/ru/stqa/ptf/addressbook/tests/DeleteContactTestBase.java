@@ -9,7 +9,7 @@ public class DeleteContactTestBase extends TestBase {
     @Test
     public void testDeleteContact2() throws Exception {
         app.getNavigationHelper().gotoMainPage();
-        app.getContactHelper().deleteContact("5");
+        app.getContactHelper().deleteContact();
     }
 
 
