@@ -35,7 +35,7 @@ public class ApplicationManager {
         }
 
 
-        wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/group.php");
 
         groupHelper = new GroupHelper(wd);
@@ -49,16 +49,6 @@ public class ApplicationManager {
     public void stop() {
         wd.quit();
     }
-
-    public boolean isElementPresent(By by) {
-        try {
-            wd.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
 
 
     public GroupHelper getGroupHelper() {
