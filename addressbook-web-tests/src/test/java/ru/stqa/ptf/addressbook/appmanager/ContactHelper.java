@@ -22,9 +22,10 @@ public class ContactHelper extends HelperBase{
     }
 
     public void deleteContact() {
-        click(By.xpath("//tr[3]/td[8]/a/img"));
+        click(By.xpath("//img[@alt='Edit']"));
         click(By.xpath("//form[2]/input[2]"));
     }
+
 
     public void initContactModification () {
 
@@ -74,4 +75,17 @@ public class ContactHelper extends HelperBase{
     }
 
 
+    public void createContact(ContactData contact) {
+
+        fillContactForm(new ContactData("Katy", "Vlad", "Melnik",
+                "KatyKaty", "1", "zzz", "zzz", "12345",
+                "54321", "1111", "22222", "katkimo@", "katkimo2@",
+                "katkimo3@", "123", "5", "January", "1900",
+                "5", "January","1950", "Address", "123", "123"));
+        submitContact();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//img[@alt='Edit']"));
+    }
 }
