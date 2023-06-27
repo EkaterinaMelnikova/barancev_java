@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.model.ContactData;
 
 
-public class DeleteContactTestBase extends TestBase {
+public class ContactDeletionTests extends TestBase {
 
 
     @Test
