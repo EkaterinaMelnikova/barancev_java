@@ -52,36 +52,25 @@ public class ContactHelper extends HelperBase{
         type(By.name("email2"),contactData.getEmeil2());
         type(By.name("email3"),contactData.getEmeil3());
         type(By.name("homepage"),contactData.getHomepage());
-
         click(By.name("bday"));
         select(By.name("bday"), contactData.getBday());
-
         click(By.name("bmonth"));
         select(By.name("bmonth"), contactData.getBmonth());
-
         type(By.name("byear"),contactData.getByear());
-
         click(By.name("aday"));
         select(By.name("aday"), contactData.getAday());
-
         click(By.name("amonth"));
         select(By.name("amonth"), contactData.getAmonth());
-
         type(By.name("ayear"),contactData.getAyear());
         type(By.name("address2"),contactData.getAddress2());
         type(By.name("phone2"),contactData.getPhone2());
         type(By.name("notes"),contactData.getNotes());
-
     }
 
 
     public void createContact(ContactData contact) {
 
-        fillContactForm(new ContactData("Katy", "Vlad", "Melnik",
-                "KatyKaty", "1", "zzz", "zzz", "12345",
-                "54321", "1111", "22222", "katkimo@", "katkimo2@",
-                "katkimo3@", "123", "5", "January", "1900",
-                "5", "January","1950", "Address", "123", "123"));
+        fillContactForm(contact);
         submitContact();
     }
 
