@@ -24,8 +24,8 @@ public class ContactModificationTests extends TestBase {
         app.getNavigationHelper().gotoMainPage();
 
         List<ContactData> before =app.getContactHelper().getContactList();
-        app.getContactHelper().initContactModification();
-        ContactData contact= new ContactData (0,"KatyNew", "Vlad", "Melnik",
+        app.getContactHelper().selectContact(before.size()-1);
+        ContactData contact= new ContactData (before.get(before.size()-1).getId(),"Mody", "Vlad", "Mody",
                 "KatyKaty", "1", "zzz", "zzz", "12345",
                 "54321", "1111", "22222", "katkimo@", "katkimo2@",
                 "katkimo3@", "123", "5", "January", "1900",
@@ -36,9 +36,7 @@ public class ContactModificationTests extends TestBase {
         List<ContactData> after =app.getContactHelper().getContactList();
 
 
-        //before.remove(before.size()-1);
-        before.remove(0);
-
+        before.remove(before.size()-1);
         before.add(contact);  //добавляем в старый список ту группу которую мы создали в тесте без учета порядка
 
         Comparator<? super ContactData> byId=(с1, с2) -> Integer.compare(с1.getId(), с2.getId());
