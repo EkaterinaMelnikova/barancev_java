@@ -193,7 +193,7 @@ public class ContactData {
     public String toString() {
         return "ContactData{" +
                 "firstname='" + firstname + '\'' +
-                ", middlename='" + middlename + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
     @Override
