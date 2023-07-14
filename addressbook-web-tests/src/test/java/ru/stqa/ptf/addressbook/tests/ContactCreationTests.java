@@ -9,18 +9,17 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void testCreateContact() throws Exception {
         app.getNavigationHelper().gotoMainPage();
         List<ContactData> before =app.getContactHelper().getContactList();
         app.getNavigationHelper().gotoContactAddPage();
-        ContactData contact= new ContactData (before.get(before.size()-1).getId(),"Mody123", "Vlad", "Mody",
+        ContactData contact= new ContactData ("Mody1237", "Vlad", "Mody",
                 "KatyKaty", "1", "zzz", "zzz", "12345",
                 "54321", "1111", "22222", "katkimo@", "katkimo2@",
                 "katkimo3@", "123", "5", "January", "1900",
                 "5", "January","1950", "Address", "123", "123");
-        app.getContactHelper().fillContactForm(contact);
-        app.getContactHelper().submitContact();
+        app.getContactHelper().createContact(contact);
         app.getNavigationHelper().gotoMainPage();
         List<ContactData> after =app.getContactHelper().getContactList();
 
