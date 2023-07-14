@@ -12,9 +12,9 @@ public class ContactDeletionTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().gotoMainPage();
+        app.navigation().gotoMainPage();
         if (!app.getContactHelper().isThereAContact()) {
-            app.getNavigationHelper().gotoContactAddPage();
+            app.navigation().gotoContactAddPage();
             app.getContactHelper().createContact(new ContactData("Katy", "Vlad", "Melnik",
                     "KatyKaty", "1", "zzz", "zzz", "12345",
                     "54321", "1111", "22222", "katkimo@", "katkimo2@",
@@ -25,13 +25,13 @@ public class ContactDeletionTests extends TestBase {
 
     @Test (enabled = true)
     public void testDeleteContact2() throws Exception {
-        app.getNavigationHelper().gotoMainPage();
+        app.navigation().gotoMainPage();
         List<ContactData> before =app.getContactHelper().getContactList();
         int index=before.size()-1;
-        app.getNavigationHelper().gotoMainPage();
+        app.navigation().gotoMainPage();
         app.getContactHelper().selectContact(index);
         app.getContactHelper().deleteContact();
-        app.getNavigationHelper().gotoMainPage();
+        app.navigation().gotoMainPage();
         List<ContactData> after =app.getContactHelper().getContactList();
 
         before.remove(index);

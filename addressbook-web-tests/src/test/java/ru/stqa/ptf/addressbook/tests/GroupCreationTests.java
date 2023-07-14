@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
@@ -14,11 +13,12 @@ public class GroupCreationTests extends TestBase {
     @Test
     public void testCreateGroup() throws Exception {
 
-        app.getNavigationHelper().gotoGroupPage();
-        List<GroupData> before =app.getGroupHelper().getGroupList();
+        app.navigation().groupPage();
+        List<GroupData> before =app.group().list();
         GroupData group =new GroupData("New", "6", "6");
-        app.getGroupHelper().createGroup(group);
-        List<GroupData> after =app.getGroupHelper().getGroupList();
+        app.group().create(group);
+        app.navigation().groupPage();
+        List<GroupData> after =app.group().list();
 
 
         before.add(group);
