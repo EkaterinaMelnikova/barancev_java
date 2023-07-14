@@ -3,9 +3,7 @@ package ru.stqa.ptf.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import ru.stqa.ptf.addressbook.model.ContactData;
-import ru.stqa.ptf.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,24 +72,30 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public void createContact(ContactData contact) {
+    public void create(ContactData contact) {
 
         fillContactForm(contact);
         submitContact();
     }
 
 
-    public void modifyContact(int index, ContactData contact) {
+    public void modify(int index, ContactData contact) {
         selectContact(index);
         fillContactForm(contact);
         submitContactModification();
     }
 
+    public  void delete(int index) {
+        selectContact(index);
+        deleteContact();
+    }
+
+
     public boolean isThereAContact() {
         return isElementPresent(By.xpath("//img[@alt='Edit']"));
     }
 //wd.findElements(By.name("entry")).get(0).findElements(By.tagName("td")).get(2).getText()
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>(); //создаем список который будем извлекать
         List<WebElement> elements = wd.findElements(By.name("entry"));//извлекаем данные со страницы приложения
         for (WebElement element : elements) { //цикл по получ элементов

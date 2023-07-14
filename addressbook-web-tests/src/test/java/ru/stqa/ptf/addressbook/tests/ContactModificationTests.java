@@ -12,29 +12,29 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.navigation().gotoMainPage();
-        if (!app.getContactHelper().isThereAContact()) {
-            app.navigation().gotoContactAddPage();
-            app.getContactHelper().createContact(new ContactData("Katy", "Vlad", "Melnik",
+        app.navigation().home();
+        if (app.contact().list().size()==0) {
+            app.navigation().addNew();
+            app.contact().create(new ContactData("Katy", "Vlad", "Melnik",
                     "KatyKaty", "1", "zzz", "zzz", "12345",
                     "54321", "1111", "22222", "katkimo@", "katkimo2@",
                     "katkimo3@", "123", "5", "January", "1900",
                     "5", "January", "1950", "Address", "123", "123"));
         }
-        app.navigation().gotoMainPage();}
+        app.navigation().home();}
 
     @Test (enabled = true)
     public void testContactModification() throws Exception {
-        List<ContactData> before =app.getContactHelper().getContactList();
+        List<ContactData> before =app.contact().list();
         int index=before.size()-1;
         ContactData contact= new ContactData (before.get(index).getId(),"Mody123", "Vlad", "Mody",
                 "KatyKaty", "1", "zzz", "zzz", "12345",
                 "54321", "1111", "22222", "katkimo@", "katkimo2@",
                 "katkimo3@", "123", "5", "January", "1900",
                 "5", "January","1950", "Address", "123", "123");
-        app.getContactHelper().modifyContact(index, contact);
-        app.navigation().gotoMainPage();
-        List<ContactData> after =app.getContactHelper().getContactList();
+        app.contact().modify(index, contact);
+        app.navigation().home();
+        List<ContactData> after =app.contact().list();
 
 
         before.remove(index);

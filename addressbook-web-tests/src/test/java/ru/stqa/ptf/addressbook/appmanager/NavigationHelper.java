@@ -9,17 +9,17 @@ public class NavigationHelper extends HelperBase {
         super(wd);
     }
 
-    public void groupPage() {
+    public void groups() {
 
         click(By.xpath("//body"));
     }
 
 
-    public void gotoContactAddPage() {
+    public void addNew() {
         wd.get("http://localhost/addressbook/edit.php");
     }
 
-    public void gotoMainPage() {
+    public void home() {
         wd.get("http://localhost/addressbook/");
     }
 }

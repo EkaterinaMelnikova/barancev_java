@@ -3,7 +3,6 @@ package ru.stqa.ptf.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.model.GroupData;
-
 import java.util.Comparator;
 import java.util.List;
 
@@ -13,11 +12,11 @@ public class GroupCreationTests extends TestBase {
     @Test
     public void testCreateGroup() throws Exception {
 
-        app.navigation().groupPage();
+        app.navigation().groups();
         List<GroupData> before =app.group().list();
         GroupData group =new GroupData("New", "6", "6");
         app.group().create(group);
-        app.navigation().groupPage();
+        app.navigation().groups();
         List<GroupData> after =app.group().list();
 
 
