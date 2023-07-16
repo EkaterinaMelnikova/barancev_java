@@ -14,7 +14,7 @@ public class GroupCreationTests extends TestBase {
 
         app.navigation().groups();
         List<GroupData> before =app.group().list();
-        GroupData group =new GroupData("New", "6", "6");
+        GroupData group =new GroupData().withName("test123");
         app.group().create(group);
         app.navigation().groups();
         List<GroupData> after =app.group().list();
