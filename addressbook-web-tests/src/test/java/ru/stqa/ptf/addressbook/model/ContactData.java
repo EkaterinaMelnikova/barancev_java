@@ -1,32 +1,43 @@
 package ru.stqa.ptf.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String firstname;
-    private final String middlename;
-    private final String lastname;
-    private final String mobile;
-    private final String emeil;
+    private int id=Integer.MAX_VALUE;;
+    private  String firstname;
+    private  String middlename;
+    private  String lastname;
+    private  String mobile;
+    private  String emeil;
 
-    public ContactData(String firstname, String middlename, String lastname,  String mobile,
-                       String emeil ) {
-        this.id = 0;
-        this.firstname = firstname;
-        this.middlename = middlename;
-        this.lastname = lastname;
-        this.mobile = mobile;
-        this.emeil = emeil;
-    }
-
-    public ContactData(int id, String firstname, String middlename, String lastname,  String mobile,
-                       String emeil ) {
+    public ContactData withId(int id) {
         this.id = id;
-        this.firstname = firstname;
-        this.middlename = middlename;
-        this.lastname = lastname;
-        this.mobile = mobile;
-        this.emeil = emeil;
+        return this;
     }
+
+    public ContactData withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public ContactData withMiddlename(String middlename) {
+        this.middlename = middlename;
+        return this;
+    }
+
+    public ContactData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public ContactData withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withEmeil(String emeil) {
+        this.emeil = emeil;
+        return this;
+    }
+
 
     public String getFirstname() {
         return firstname;
