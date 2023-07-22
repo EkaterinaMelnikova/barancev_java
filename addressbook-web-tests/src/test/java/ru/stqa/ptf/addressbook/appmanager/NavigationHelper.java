@@ -22,4 +22,8 @@ public class NavigationHelper extends HelperBase {
     public void home() {
         wd.get("http://localhost/addressbook/");
     }
+    public void clickOkOnAlert() {
+        wd.switchTo().alert().accept();
+    }
+
 }

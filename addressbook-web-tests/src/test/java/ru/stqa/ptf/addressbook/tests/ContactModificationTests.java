@@ -5,8 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.model.ContactData;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 public class ContactModificationTests extends TestBase {
 
@@ -15,30 +14,25 @@ public class ContactModificationTests extends TestBase {
         app.navigation().home();
         if (app.contact().list().size() == 0) {
             app.navigation().addNew();
-            app.contact().create(new ContactData().withFirstname("rere"));
+            app.contact().create(new ContactData().withFirstname("Петр").withLastname("Карадашев"));
         }
         app.navigation().home();
     }
 
     @Test(enabled = true)
     public void testContactModification() throws Exception {
-        List<ContactData> before = app.contact().list();
-        int index = before.size() - 1;
-        ContactData contact = new ContactData().withId(before.get(index).getId()).withFirstname("qwqwq")
-                .withMiddlename("sasas").withLastname("rerer")
+        Set<ContactData> before = app.contact().all();
+        ContactData modifiedContact = before.iterator().next();
+        ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Сидор")
+                .withMiddlename("Петроввич").withLastname("Иванов")
                 .withMobile("21212121").withEmeil("sasa@vcc.jhj");
 
-        app.contact().modify(index, contact);
+        app.contact().modify(contact);
         app.navigation().home();
-        List<ContactData> after = app.contact().list();
+        Set<ContactData> after = app.contact().all();
 
-
-        before.remove(index);
+        before.remove(modifiedContact);
         before.add(contact);  //добавляем в старый список ту группу которую мы создали в тесте без учета порядка
-
-        Comparator<? super ContactData> byId = (с1, с2) -> Integer.compare(с1.getId(), с2.getId());
-        before.sort(byId);
-        after.sort(byId);
 
         Assert.assertEquals(before, after);
     }

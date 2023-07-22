@@ -4,11 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.ptf.addressbook.model.GroupData;
-import ru.stqa.ptf.addressbook.tests.Groups;
+import ru.stqa.ptf.addressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
@@ -81,7 +79,7 @@ public class GroupHelper extends HelperBase {
         for (WebElement element: elements) {
             String name =element.getText();
             int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            groups.add (new GroupData().withId(id).withName(name));
+            groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
     }
