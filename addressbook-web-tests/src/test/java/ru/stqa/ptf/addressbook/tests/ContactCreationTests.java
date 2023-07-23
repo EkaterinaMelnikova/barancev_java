@@ -1,5 +1,6 @@
 package ru.stqa.ptf.addressbook.tests;
 
+import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 import ru.stqa.ptf.addressbook.model.ContactData;
 import ru.stqa.ptf.addressbook.model.Contacts;
@@ -18,6 +19,7 @@ public class ContactCreationTests extends TestBase {
         ContactData contact= new ContactData().withFirstname("Иван").withLastname("Петров");
         app.contact().create(contact);
         app.navigation().home();
+        assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after =app.contact().all();
 
         assertThat(after, equalTo(
