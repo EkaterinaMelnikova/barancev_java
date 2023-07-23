@@ -5,11 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.ptf.addressbook.model.ContactData;
 import ru.stqa.ptf.addressbook.model.Contacts;
+import ru.stqa.ptf.addressbook.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -35,6 +34,7 @@ public class ContactHelper extends HelperBase {
     public void selectContact(int index) {
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
+
     public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[id='" + id + "']")).click();
     }
@@ -59,6 +59,7 @@ public class ContactHelper extends HelperBase {
     public void create(ContactData contact) {
         fillContactForm(contact);
         submitContact();
+        contactCache = null;
     }
 
 
@@ -66,14 +67,16 @@ public class ContactHelper extends HelperBase {
         selectModifyById(contact.getId());
         fillContactForm(contact);
         submitContactModification();
+        contactCache = null;
     }
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         deleteContact();
+        contactCache = null;
     }
 
-    public  void delete(int index) {
+    public void delete(int index) {
         selectContact(index);
         deleteContact();
     }
@@ -97,17 +100,26 @@ public class ContactHelper extends HelperBase {
         return contacts; //возвращаем список
     }
 
+
+    private Contacts contactCache = null;
+
     public Contacts all() {
-        Contacts contacts = new Contacts(); //создаем set который будем извлекать
-        List<WebElement> elements = wd.findElements(By.name("entry"));//извлекаем данные со страницы приложения
-        for (WebElement element : elements) { //цикл по получ элементов
-            String firstname = element.findElements(By.tagName("td")).get(2).getText();
-            String lastname = element.findElements(By.tagName("td")).get(1).getText();
-            int id = Integer.parseInt(element.findElements(By.tagName("td")).get(0)
-                    .findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+        {
+            if (contactCache != null) {
+                return new Contacts(contactCache);
+            }
+
+            contactCache = new Contacts();
+            List<WebElement> elements = wd.findElements(By.name("entry"));//извлекаем данные со страницы приложения
+            for (WebElement element : elements) { //цикл по получ элементов
+                String firstname = element.findElements(By.tagName("td")).get(2).getText();
+                String lastname = element.findElements(By.tagName("td")).get(1).getText();
+                int id = Integer.parseInt(element.findElements(By.tagName("td")).get(0)
+                        .findElement(By.tagName("input")).getAttribute("value"));
+                contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+            }
+            return contactCache;
         }
-        return contacts; //возвращаем список
     }
 }
 
